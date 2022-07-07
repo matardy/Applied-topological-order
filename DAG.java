@@ -65,17 +65,18 @@ public class DAG {
 
 
     public static void main(String[] args) {
-        ArrayList<Malla> Data = new ArrayList<>();
 
+        // Load data into CSV java object
         CSVReader CSVObject = new CSVReader(";", "src/malla_curricular.csv");
+        // Load CSV Java object into Graph object
         CSVObject.updateBuffer();
         Graph g = new Graph(CSVObject.DataSize);
-        CSVObject.updateBuffer();
+        // Create a Directed Acyclic Graph with all of its functionalities.
         DAG dag = new DAG(CSVObject, g);
-
-
+        // Build the graph from CSVObject and Graph class.
         dag.BuildGraph();
 
+        // Print topological order
         System.out.println(dag.TopologicalSort());
 
 
