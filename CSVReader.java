@@ -30,7 +30,7 @@ public class CSVReader {
     }
 
     // Actualiza el buffer the la data
-    void updateBuffer() {
+    public void updateBuffer() {
         try {
             this.DataBuffered = new BufferedReader(new FileReader(this.Path));
         } catch (IOException e) {
@@ -38,22 +38,28 @@ public class CSVReader {
         }
     }
 
-    void printData() {
+    public String printData() {
 
         String[] DataFrame;
         String line = "";
+        String printedData = "";
 
         try {
             while ((line = this.DataBuffered.readLine()) != null) {
                 DataFrame = line.split(this.splitBy);
-                System.out.println("Malla[Index= " + DataFrame[0] + " , " + "Materia= " + DataFrame[1] +
+                printedData += "Malla[Index= " + DataFrame[0] + " , " + "Materia= " + DataFrame[1] +
                         " , " + "Prerequisito= " + DataFrame[2] + " , " + "Codigo= " + DataFrame[3] + " , " + "Creditos= " +
-                        DataFrame[4] + " , " + "Horas= " + DataFrame[5] + "]");
+                        DataFrame[4] + " , " + "Horas= " + DataFrame[5] + "]" + "\n" ;
+
+//                System.out.println("Malla[Index= " + DataFrame[0] + " , " + "Materia= " + DataFrame[1] +
+//                        " , " + "Prerequisito= " + DataFrame[2] + " , " + "Codigo= " + DataFrame[3] + " , " + "Creditos= " +
+//                        DataFrame[4] + " , " + "Horas= " + DataFrame[5] + "]");
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return printedData;
     }
 
     // Retorna Estructura de datos <ArrayList>, en cada espacio guarda un Objeto del tipo Malla

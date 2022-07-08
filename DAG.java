@@ -53,7 +53,7 @@ public class DAG {
         while(counter != 0){
             for(int i=1; i<=CSVObject.DataSize ; i++){
                 if(this.Data.get(i).indice.equals(topologicalSort[counter].toString())){
-                    order += this.Data.get(i).materia + " ~~> ";
+                    order += this.Data.get(i).materia + "\n" ;
                 }
             }
             counter--;
